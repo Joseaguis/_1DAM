@@ -4,14 +4,23 @@ import java.util.Scanner;
 
 public class _25LetraNif {
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce los numeros de tu DNI: ");
-		int dni = sc.nextInt();
-		
-		System.out.println(Integer.toString(dni) + calcularLetraNif(dni));
-		
+		String dni = sc.next().toUpperCase();
+		char dniLetra = dni.charAt(dni.length() - 1);
+		dni = dni.substring(0, dni.length() - 1);
+		int dniNum = Integer.parseInt(dni);
+
+		System.out.println(dniLetra);
+		if (calcularLetraNif(dniNum) == dniLetra) {
+			System.out.println("La letra es correcta");
+		} else {
+			System.out.println("La letra es incorrecta");
+		}
+
 	}
+
 	public static char calcularLetraNif(int nif) {
 		char letra = 'x';
 		nif = nif % 23;
@@ -62,7 +71,7 @@ public class _25LetraNif {
 			letra = 'K';
 		else
 			letra = 'E';
-		
+
 		return letra;
 	}
 }
