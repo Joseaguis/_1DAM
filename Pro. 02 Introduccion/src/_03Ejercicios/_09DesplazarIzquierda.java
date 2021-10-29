@@ -10,9 +10,7 @@ public class _09DesplazarIzquierda {
 		System.out.println("Introduce una palabra: ");
 		String palabra = sc.next();
 		
-		char primeraLetra = palabra.charAt(0);
-		
-		System.out.println("Texto desplazado: " + palabra.substring(1, palabra.length() - 1) + primeraLetra);
+		System.out.println("Texto desplazado: " + palabra.substring(1) + palabra.charAt(0));
 		
 		
 	}
