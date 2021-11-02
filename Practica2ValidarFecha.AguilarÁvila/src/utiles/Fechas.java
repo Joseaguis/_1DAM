@@ -14,8 +14,22 @@ public class Fechas {
 	 * @return true si el anyo es bisiesto y false en caso contrario
 	 */
 	public static boolean esBisiesto(int anyo){
-		//TODO Completar esBisiesto
-		return false;
+		boolean bisiesto;
+		
+		if (anyo % 100 == 0) {
+			if (anyo % 400 == 0) {
+				bisiesto = true;
+			}else {
+				bisiesto = false;
+			} 
+		}else {
+			if (anyo % 4 == 0) {
+				bisiesto = true;
+			} else {
+			bisiesto = false;
+			}
+		}
+		return bisiesto;
 	}
 	
 	/**
@@ -27,8 +41,35 @@ public class Fechas {
 	 * @return el numero de dias que tiene el mes
 	 */
 	public static int diasDelMes(int mes, int anyo){
-		//TODO Completar diasDelMes Habra que llamar al metodo esBisiesto cuando el mes sea febrero, para averiguar el numero de dias
-		return 0;
+		int dias = 0;
+		switch (mes) {
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			dias = 31;
+			break;
+			
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			dias = 30;
+			break;
+			
+		case 2:
+			if (esBisiesto(anyo)) dias = 29;
+			else dias = 28;
+			break;
+			
+		default:
+			dias = -1;
+			break;
+		}
+		return dias;
 	}
 	
 	/**
@@ -37,8 +78,50 @@ public class Fechas {
 	 * @return el nombre del mes correspondiente
 	 */
 	public static String nombreDelMes(int mes){
-		//TODO completar nombreDelMes
-		return "";
+		String nombreMes = "";
+		switch (mes) {
+		case 1:
+			nombreMes = "Enero";
+			break;
+		case 2:
+			nombreMes = "Febrero";
+			break;
+		case 3:
+			nombreMes = "Marzo";
+			break;
+		case 4:
+			nombreMes = "Abril";
+			break;
+		case 5:
+			nombreMes = "Mayo";
+			break;
+		case 6:
+			nombreMes = "Junio";
+			break;
+		case 7:
+			nombreMes = "Julio";
+			break;
+		case 8:
+			nombreMes = "Agosto";
+			break;
+		case 9:
+			nombreMes = "Septiembre";
+			break;
+		case 10:
+			nombreMes = "Octubre";
+			break;
+		case 11:
+			nombreMes = "Noviembre";
+			break;
+		case 12:
+			nombreMes = "Diciembre";
+			break;
+		default:
+			nombreMes ="Erroneo";
+			break;
+		}
+		
+		return nombreMes;
 	}
 	
 	/**
@@ -50,8 +133,15 @@ public class Fechas {
 	 * @return el dia de la fecha
 	 */
 	public static int extraerDia (String fecha){
-		//TODO Completar extraerDia
-		return 0;
+		int dia = 0;
+		String restoFecha = fecha;
+		String pFecha = "";
+		for (int i = 0; i < 1; i++) {
+			pFecha = fecha.substring(0, fecha.indexOf('/'));
+			restoFecha = fecha.substring(fecha.indexOf('/') + 1);
+		}
+		dia = Integer.parseInt(pFecha);
+		return dia;
 	}
 
 	/**
@@ -64,7 +154,15 @@ public class Fechas {
 	 */
 	public static int extraerMes (String fecha){
 		//TODO Completar extraerMes
-		return 0;
+		int mes = 0;
+		String restoFecha = fecha;
+		String pFecha = "";
+		for (int i = 0; i < 2; i++) {
+			pFecha = fecha.substring(0, fecha.indexOf('/'));
+			restoFecha = fecha.substring(fecha.indexOf('/') + 1);
+		}
+		mes = Integer.parseInt(pFecha);
+		return mes;
 	}
 	
 	/**
@@ -77,7 +175,15 @@ public class Fechas {
 	 */
 	public static int extraerAnyo (String fecha){
 		//TODO Completar extraerAnyo
-		return 0;
+		int aÃ±o = 0;
+		String restoFecha = fecha;
+		String pFecha = "";
+		for (int i = 0; i < 3; i++) {
+			pFecha = fecha.substring(0, fecha.indexOf('/'));
+			restoFecha = fecha.substring(fecha.indexOf('/') + 1);
+		}
+		aÃ±o = Integer.parseInt(pFecha);
+		return aÃ±o;
 	}
 	
 	/**
@@ -95,7 +201,7 @@ public class Fechas {
 	public static boolean esFechaValida(int dia, int mes, int anyo){
 		// TODO Completar esFechaValida
 		// Este metodo tendra que llamar a diasDelMes para averiguar cuantos
-		// dias tiene el mes de la fecha que nos dan y asi comprobar ç
+		// dias tiene el mes de la fecha que nos dan y asi comprobar ï¿½
 		// si el dia es correcto o no
 		return false;
 	}
@@ -109,7 +215,7 @@ public class Fechas {
 	 * @param d2 Dia de la segunda fecha
 	 * @param m2 Mes de la segunda fecha
 	 * @param a2 Anyo de la segunda fecha
-	 * @return un entero que será:
+	 * @return un entero que serï¿½:
 	 *  -1 si la primera fecha es menor (anterior) que la segunda 
 	 *   0 si las dos fechas son iguales
 	 *  +1 si la primera fecha es mayor (posterior) que la segunda 

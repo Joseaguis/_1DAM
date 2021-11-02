@@ -10,8 +10,8 @@ import java.util.Scanner;
  *
  */
 public class ValidarFecha {
-	// Definimos el objeto Scanner tec fuera de los metodos. Al hacerlo así
-	// podemos usar tec tanto en el metodo main como en el resto de métodos
+	// Definimos el objeto Scanner tec fuera de los metodos. Al hacerlo asï¿½
+	// podemos usar tec tanto en el metodo main como en el resto de mï¿½todos
 	Scanner tec = new Scanner(System.in);
 
 	
@@ -36,7 +36,7 @@ public class ValidarFecha {
 
 	/**
 	 * Muestra el menu descrito en el enunciado y permite al usuario elegir una
-	 * opción. Si el usuario pone una opción incorrecta, le avisa y le deja
+	 * opciï¿½n. Si el usuario pone una opciï¿½n incorrecta, le avisa y le deja
 	 * volver a seleccionar una opcion
 	 * 
 	 * @return la opcion elegida por el usuario: 0, 1, 2, ....
@@ -48,7 +48,7 @@ public class ValidarFecha {
 	}
 
 	/**
-	 * Metodo para responder a la opcion 1 del menu. Lee una fecha y le dice ç
+	 * Metodo para responder a la opcion 1 del menu. Lee una fecha y le dice ï¿½
 	 * al usuario si es correcta o incorrecta
 	 */
 	public static void opcion1() {
