@@ -7,17 +7,12 @@ public class _15ForNImpares {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Introduce el número de impares");
-		int veces = sc.nextInt();
-		int numI = 0;
+		int n = sc.nextInt();
+		int impar = 1;
 		
-		for (int i = 0; i < veces; i++) {
-			
-			if (numI % 2 == 1) {
-				System.out.println(numI);
-			}else {
-				
-			}
-			
+		for (int i = 0; i < n; i++) {
+			System.out.println(impar);
+			impar += 2;
 		}
 		
 	}

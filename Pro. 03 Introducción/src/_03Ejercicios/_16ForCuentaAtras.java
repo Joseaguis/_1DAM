@@ -10,8 +10,8 @@ public class _16ForCuentaAtras {
 		System.out.println("Numero cuenta atras: ");
 		int nCuenta = sc.nextInt();
 		
-		for (int i = 0; i < nCuenta; nCuenta--) {
-			System.out.println(nCuenta);
+		for (int i = nCuenta; i >= 0; i--) {
+			System.out.println(i);
 		}
 		
 	}
