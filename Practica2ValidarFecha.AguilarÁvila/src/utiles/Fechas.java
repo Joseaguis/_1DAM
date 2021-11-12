@@ -220,7 +220,27 @@ public class Fechas {
 	 */
 	public static int compararFechas(int d1, int m1, int a1, int d2, int m2, int a2) {
 		// TODO Completar compararFechas
-		return 0;
+		int fechaMayor = 0;
+		if (a1 == a2) {
+			if (m1 == m2) {
+				if (d1 == d2) {
+					fechaMayor = 0;
+				}else if (d1 < d2) {
+					fechaMayor = 1;
+				}else {
+					fechaMayor = 2;
+				}
+			}else if (m1 < m2) {
+				fechaMayor = 1;
+			}else {
+				fechaMayor = 2;
+			}
+		}else if (a1 < a2) {
+			fechaMayor = 1;
+		}else {
+			fechaMayor = 2;
+		}
+		return fechaMayor;
 	}
 
 	public static int extraerFecha(String restoFecha, int posicion) {
