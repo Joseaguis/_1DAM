@@ -185,6 +185,8 @@ public class ValidarFecha {
 			}
 		} while (validarF == false);
 			
+		//Dias totales
+		
 		int diasTotales = 0;
 		
 		while (a1 != a2) {
@@ -205,13 +207,7 @@ public class ValidarFecha {
 			}
 		}
 		
-		if (d1 == d2) {
-			diasTotales = 0;
-		}else if(d1 < d2) {
-			diasTotales = d1 - d2;
-		}else {
-			diasTotales = d2 + d1;
-		}
+		diasTotales += d2 - d1;
 		
 		System.out.println("La diferencia de dias es de " + Math.abs(diasTotales));
 	}
