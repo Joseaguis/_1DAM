@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class _15Notas {
 	public static void main(String[] args) {
-		double[][] notas = { { 8, 8, 8, 8 }, { 4, 8, 2, 9 }, { 9, 7, 8, 6 }, { 5, 5, 5, 5 }, { 6, 2, 8, 5 } };
+		double[][] notas = { { 4, 8, 8, 8 }, { 4, 8, 2, 9 }, { 4, 7, 8, 6 }, { 4, 5, 5, 5 }, { 4, 5, 3, 1 } };
 
 		imprimirNotasAlumnos(notas);
 		imprimirNotasAsignatura(notas);
@@ -13,7 +13,8 @@ public class _15Notas {
 		imprimirMediaAsignatura(notas);
 		indicarAsignaturaMasFacil(notas);
 		System.out.println("Hay algun alumno que haya suspendido todo?: " + HayAlumnoQueSuspendaTodo(notas));
-
+		System.out.println("Hay alguna asignatura que hayan suspendido todos?: " + HayAsignaturaQueSuspendanTodos(notas));
+		mediaAlmuno(notas, 0);
 	}
 
 	public static void imprimirNotasAlumnos(double[][] notas) {
@@ -21,7 +22,7 @@ public class _15Notas {
 		for (int i = 0; i < notas.length; i++) {
 			System.out.println("Alumno: " + i);
 			for (int j = 0; j < notas[i].length; j++) {
-				System.out.println("----Asignatura " + j + " : " + notas[i][j]);
+				System.out.println("----Asignatura " + (j + 1) + " : " + notas[i][j]);
 			}
 		}
 
@@ -84,19 +85,51 @@ public class _15Notas {
 	}
 
 	public static boolean HayAlumnoQueSuspendaTodo(double[][] notas) {
-		
+
 		boolean alguienSuspendioTodo = false;
-		for (int i = 0; i < notas.length; i++) {
-			for (int j = 0; j < notas.length; j++) {
-				
+		for (int i = 0; i < notas.length && !alguienSuspendioTodo; i++) {
+			boolean suspenso = true;
+			int asigSuspendidas = 0;
+			for (int j = 0; j < notas[0].length && suspenso; j++) {
+				if (notas[i][j] >= 5) {
+					suspenso = false;
+				}
+				asigSuspendidas++;
+			}
+			if (asigSuspendidas == notas[0].length) {
+				alguienSuspendioTodo = true;
 			}
 		}
-		
-		return false;
+
+		return alguienSuspendioTodo;
 	}
 
 	public static boolean HayAsignaturaQueSuspendanTodos(double[][] notas) {
+		boolean asigSuspendidaTodos = false;
+		for (int j = 0; j < notas[0].length && !asigSuspendidaTodos; j++) {
+			boolean suspenso = true;
+			int alumnosSuspensos = 0;
+			for (int i = 0; i < notas.length && suspenso; i++) {
+				if (notas[i][j] >= 5) {
+					suspenso = false;
+				}
+				alumnosSuspensos++;
+			}
+			if (alumnosSuspensos == notas.length) {
+				asigSuspendidaTodos = true;
+			}
+		}
 
-		return false;
+		return asigSuspendidaTodos;
+	}
+	public static void mediaAlmuno (double[][] notas, int a) {
+		
+			double sumaNotas = 0;
+			for (int j = 0; j < notas[0].length; j++) {
+				sumaNotas += notas[a][j];
+			}
+			double media = sumaNotas / notas[0].length;
+			System.out.format("Media del Alumno %d: %04.2f%n", (a + 1), media);
+		
 	}
 }
