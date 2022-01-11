@@ -3,21 +3,15 @@ package _02Ejemplos;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class _05LeerEdad {
+public class _06LeerEdadPropagado {
 	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		try {
-			int edad = leerEdad(120);
-
-			if (edad >= 18)
-				System.out.println("Mayor de edad");
-			else
-				System.out.println("Menor de edad");
-
-		} catch (InputMismatchException e) {
-			System.out.println("Introduce un numero");
-		}
+		int edad = leerEdad(120);
+		if (edad >= 18)
+			System.out.println("Mayor de edad");
+		else
+			System.out.println("Menor de edad");
 
 	}
 
@@ -31,14 +25,18 @@ public class _05LeerEdad {
 		int edad = 0;
 
 		do {
+			try {
+				edad = sc.nextInt();
+				if (edad < valorMaximo && edad > 0) {
+					correcto = true;
+				} else {
+					System.out.println("Introduce un numero entre 0 y " + valorMaximo);
+				}
 
-			edad = sc.nextInt();
-			if (edad < valorMaximo && edad > 0) {
-				correcto = true;
-			} else {
+			} catch (InputMismatchException e) {
 				System.out.println("Introduce un numero entre 0 y " + valorMaximo);
+				sc.nextLine();
 			}
-
 		} while (!correcto);
 		return edad;
 
