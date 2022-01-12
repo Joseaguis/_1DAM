@@ -26,6 +26,8 @@ public class _07CapturarVariasExcepciones {
 			System.out.println("No se puede dividir por 0");
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Introduce una posicion dentro del array");
+		}catch (Exception e) {
+			System.out.println("Se ha producido un error en la ejecución");
 		}
 		
 		/*
