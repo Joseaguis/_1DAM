@@ -1,4 +1,4 @@
-package _02Ejemplos._02Tiempo;
+package _02Ejemplos._03Tiempo;
 
 /**
  * Clase para representar un instante de tiempo del dia, con precision de
@@ -29,9 +29,11 @@ public class Tiempo {
 	 * @param segundo el segundo
 	 */
 	public Tiempo(int hora, int minuto, int segundo) {
-		this.hora = hora;
-		this.minuto = minuto;
-		this.segundo = segundo;
+		// Desde el constructor puedo llamar
+		this.setHora(hora);
+		this.setMinuto(minuto);
+		this.setSegundo(segundo);
+
 	}
 
 	/**
@@ -40,11 +42,26 @@ public class Tiempo {
 	 * @param segundosTranscurridos
 	 */
 	public Tiempo(int segundosTranscurridos) {
-		this.hora = segundosTranscurridos / 3600;
-		this.minuto = (segundosTranscurridos % 3600) / 60;
-		this.segundo = (segundosTranscurridos % 3600) % 60;
+		int h = (segundosTranscurridos / 3600);
+		int m = ((segundosTranscurridos % 3600) / 60);
+		int s = ((segundosTranscurridos % 3600) % 60);
+		this.setHora(h);
+		this.setMinuto(m);
+		this.setSegundo(s);
 	}
-
+	
+	/**
+	 * Crea un objeto Tiempo a partir de un String con formato hh:mm:ss
+	 * Si el formano no es correcto se producira una excepcion
+	 * SI la hora, minuto o segundo no son correctos, se producira excepcion
+	 * 
+	 * @param s
+	 */
+	public Tiempo (String s) {
+		this.setHora(Integer.parseInt(s.substring(0, s.indexOf(':'))));
+		this.setMinuto(Integer.parseInt(s.substring(s.indexOf(':') + 1, s.lastIndexOf(':'))));
+		this.setSegundo(Integer.parseInt(s.substring(s.lastIndexOf(':') + 1)));
+	}
 	/*
 	 * Devuelve un String representativo del objeto
 	 */
@@ -52,6 +69,27 @@ public class Tiempo {
 	public String toString() {
 		// return hora + ":" + minuto + ":" + segundo;
 		return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+	}
+
+	public boolean equals(Object o) {
+		// Hay que comparar la hora, minuto y segundo de this con la hora , minuto y
+		// segundo de p
+
+		// Si this y 'o' son el mismo objeto (misma direccion de memoria) los objetos
+		// son los mismos
+		if (this == o)
+			return true;
+
+		// Si o no es el mismo tipo Tiempo, los objetos no seran iguales
+		if (!(o instanceof Tiempo))
+			return false;
+
+		// Comparamos hora, minuto y segundo
+		if (this.hora == ((Tiempo) o).hora && this.minuto == ((Tiempo) o).minuto
+				&& this.segundo == ((Tiempo) o).segundo)
+			return true;
+		else
+			return false;
 	}
 
 	// Metodo getter
@@ -77,13 +115,13 @@ public class Tiempo {
 	public void setMinuto(int m) {
 		if (m < 0 || m > 60)
 			throw new IllegalArgumentException();
-		this.hora = m; // el this no es necesario
+		this.minuto = m; // el this no es necesario
 	}
 
 	public void setSegundo(int s) {
 		if (s < 0 || s > 60)
 			throw new IllegalArgumentException();
-		this.hora = s; // el this no es necesario
+		this.segundo = s; // el this no es necesario
 	}
 
 }
