@@ -5,7 +5,7 @@ package _02Ejemplos._03Tiempo;
  * segundos (hora, minuto y segundos)
  * 
  */
-public class Tiempo {
+public class Tiempo implements Comparable<Tiempo> {
 	// Atributos: Los atributos son informacion que tienen cada uno de los objetos
 	// pertenecen a una clase
 	private int hora;
@@ -49,18 +49,20 @@ public class Tiempo {
 		this.setMinuto(m);
 		this.setSegundo(s);
 	}
-	
+
 	/**
-	 * Crea un objeto Tiempo a partir de un String con formato hh:mm:ss
-	 * Si el formano no es correcto se producira una excepcion
-	 * SI la hora, minuto o segundo no son correctos, se producira excepcion
+	 * Crea un objeto Tiempo a partir de un String con formato hh:mm:ss Si el
+	 * formano no es correcto se producira una excepcion SI la hora, minuto o
+	 * segundo no son correctos, se producira excepcion
 	 * 
 	 * @param s
 	 */
-	public Tiempo (String s) {
+	public Tiempo(String s) {
+
 		this.setHora(Integer.parseInt(s.substring(0, s.indexOf(':'))));
 		this.setMinuto(Integer.parseInt(s.substring(s.indexOf(':') + 1, s.lastIndexOf(':'))));
 		this.setSegundo(Integer.parseInt(s.substring(s.lastIndexOf(':') + 1)));
+
 	}
 	/*
 	 * Devuelve un String representativo del objeto
@@ -69,6 +71,36 @@ public class Tiempo {
 	public String toString() {
 		// return hora + ":" + minuto + ":" + segundo;
 		return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+	}
+/**
+ * Una posibilidad
+ * public int compareTo(Tiempo t) {
+		if (this.hora < t.hora)
+			return -1;
+		else if (this.hora > t.hora)
+			return 1;
+		else if (this.minuto < t.minuto)
+			return -1;
+		else if (this.minuto > t.minuto)
+			return 1;
+		else if (this.segundo < t.segundo)
+			return -1;
+		else if (this.segundo > t.segundo)
+			return 1;
+		else
+			return 0;
+
+	}
+ */
+	
+
+	public int compareTo(Tiempo t) {
+		if (this.hora != t.hora)
+			return this.hora - t.hora;
+		else if (this.minuto != t.minuto)
+			return this.minuto - t.minuto;
+		else
+			return this.segundo - t.segundo;
 	}
 
 	public boolean equals(Object o) {

@@ -11,19 +11,12 @@ import java.util.Scanner;
  * incorrecto la vuelve a pedir
  */
 
-public class Test {
+public class Test3 {
 	static Scanner sc = new Scanner(System.in);
 
 	// Pedir al usuario hora de entrada y hora de salida que tiene que
 	// ser distintas
 	public static void main(String[] args) {
-		
-		Tiempo test = new Tiempo("23:42:12");
-		Tiempo test2 = new Tiempo("24::42:72");
-		Tiempo test3 = new Tiempo("a:dah/a");
-		System.out.println(test.toString());
-		System.out.println(test2.toString());
-		System.out.println(test3.toString());
 		
 		Tiempo entrada, salida;
 		do {
@@ -32,45 +25,38 @@ public class Test {
 
 			System.out.println("Hora de salida: ");
 			salida = leerTiempo();
-			if (entrada.equals(salida)) {
+			if (entrada.compareTo(salida) >= 0) {
 				System.out.println("Las horas tienen que ser distintas");
+				
 			}
-		} while (entrada.equals(salida));
+		} while (entrada.compareTo(salida) >= 0);
 		System.out.println("Entrada: " + entrada.toString());
 		System.out.println("Salida: " + salida.toString());
 
 	}
 
 	public static Tiempo leerTiempo() {
-
-		int h = 0, m = 0, s = 0;
+		
 		boolean ok = false;
 		Tiempo t = null;
 		
 		do {
 			try {
-				System.out.println("Hora: ");
-				h = sc.nextInt();
-
-				System.out.println("Minuto: ");
-				m = sc.nextInt();
-
-				System.out.println("Segundo: ");
-				s = sc.nextInt();
-				
-				t = new Tiempo(h, m, s);
-
-				ok = true;
-
-			} catch (InputMismatchException e) {
-				System.out.println("El dato tiene que ser entero");
-				sc.nextLine();
+			
+			System.out.println("(hh:mm:ss): ");
+			String s = sc.next();
+			t = new Tiempo(s);
+			ok = true;
+			
 			} catch (IllegalArgumentException e) {
-				System.out.println("No pasarse del maximo valor");
+				System.out.println("Formato ilegal");
+			} catch (IndexOutOfBoundsException e) {
+				System.out.println("Falta texto");
+			} catch (InputMismatchException e) {
+				// TODO: handle exception
 			}
 		} while (!ok);
 
-		
 		return t;
 
 	}
