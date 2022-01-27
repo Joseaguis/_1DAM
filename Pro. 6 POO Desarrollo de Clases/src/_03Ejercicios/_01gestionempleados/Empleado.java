@@ -56,7 +56,7 @@ public class Empleado implements Comparable<Empleado> {
 		String EmpleadoFormateado;
 
 		EmpleadoFormateado = String.format(
-				"Nombre: %s%n" + "Dni: %s%n" + "Año de ingreso: %d%n" + "Sueldo bruto anual: %f", this.nombre, this.dni,
+				"Nombre: %s%n" + "Dni: %s%n" + "Año de ingreso: %d%n" + "Sueldo bruto anual: %6.02f", this.nombre, this.dni,
 				this.anyo, this.sueldo);
 
 		return EmpleadoFormateado;
