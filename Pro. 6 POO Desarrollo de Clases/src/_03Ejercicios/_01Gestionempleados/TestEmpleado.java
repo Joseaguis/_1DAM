@@ -1,4 +1,4 @@
-package _03Ejercicios._01gestionempleados;
+package _03Ejercicios._01Gestionempleados;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,8 +7,8 @@ public class TestEmpleado {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		// Empleado empleado1 = new Empleado("Paco", "12345678N", 2005, 1400);
-		// Empleado empleado2 = new Empleado("Javier", "87965432N", 2012, 700);
+		// Empleado empleado1 = new Empleado("Paco", "12345678N", 2005, 14000);
+		// Empleado empleado2 = new Empleado("Javier", "87965432N", 2012, 7000);
 		
 		boolean ok = false;
 		String nombre = "", dni = "";
@@ -76,8 +76,8 @@ public class TestEmpleado {
 		System.out.println(empleado1 + "\n");
 		System.out.println(empleado2 + "\n");
 		
-		System.out.println(Empleado.calcularIRPF(empleado1.getSueldo()));
-		System.out.println(Empleado.calcularIRPF(empleado2.getSueldo())+ "\n");
+		System.out.println(Empleado.calcularIRPF(empleado1.getSueldo() / 12));
+		System.out.println(Empleado.calcularIRPF(empleado2.getSueldo() / 12 ) + "\n");
 		
 		System.out.println(empleado1.getSueldo() - Empleado.calcularIRPF(empleado1.getSueldo()));
 		System.out.println(empleado2.getSueldo() - Empleado.calcularIRPF(empleado2.getSueldo())+ "\n");

@@ -1,4 +1,4 @@
-package _03Ejercicios._01gestionempleados;
+package _03Ejercicios._01Gestionempleados;
 
 import java.util.Calendar;
 
@@ -118,6 +118,7 @@ public class Empleado implements Comparable<Empleado> {
 	/*
 	 * Getters
 	 */
+	
 	/**
 	 * @return
 	 */
