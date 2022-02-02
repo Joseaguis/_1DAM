@@ -47,7 +47,7 @@ public class ListaReservas {
 		while (it.hasNext()) {
 			Reserva reserva = (Reserva) it.next();
 			if (reserva.getCodLibroReservado() == codigo) {
-				numEjemplares++;
+				 numEjemplares += reserva.getNumEjemplares();
 			}
 		}
 		return numEjemplares;

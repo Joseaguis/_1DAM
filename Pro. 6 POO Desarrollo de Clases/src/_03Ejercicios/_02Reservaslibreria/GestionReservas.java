@@ -48,8 +48,10 @@ public class GestionReservas {
 
 					l.reservar(nif, nombre, tel, codigo, ejemplares);
 				} catch (IllegalArgumentException e) {
+					tec.nextLine();
 					System.out.println("La reserva ya existe");
 				} catch (InputMismatchException e) {
+					tec.nextLine();
 					System.out.println("Datos incorrectos");
 				}
 				break;
@@ -63,6 +65,7 @@ public class GestionReservas {
 
 					l.cancelar(nif, codigo);
 				} catch (NoSuchElementException e) {
+					tec.nextLine();
 					System.out.println("la reserva no existe");
 				}
 
@@ -76,6 +79,7 @@ public class GestionReservas {
 
 					System.out.println("Numero de Pedidos: " + l.numEjemplaresReservadosLibro(codigo));
 				} catch (InputMismatchException e) {
+					tec.nextLine();
 					System.out.println("Datos incorrectos");
 				}
 				break;
@@ -89,6 +93,7 @@ public class GestionReservas {
 
 					System.out.println(l.reservasLibro(codigo));
 				} catch (InputMismatchException e) {
+					tec.nextLine();
 					System.out.println("Datos incorrectos");
 				}
 				break;
@@ -103,16 +108,22 @@ public class GestionReservas {
 	}
 
 	public static int menu(String opciones[]) {
-		int opc;
-		do {
-			for (int i = 0; i < opciones.length; i++) {
-				System.out.println("\t" + opciones[i]);
-			}
-			System.out.println("Elija una opción");
-			opc = tec.nextInt();
-			tec.nextLine(); // Limpiar buffer
+		int opc = 0;
+		try {
+			do {
+				for (int i = 0; i < opciones.length; i++) {
+					System.out.println("\t" + opciones[i]);
+				}
+				System.out.println("Elija una opción");
+				opc = tec.nextInt();
+				tec.nextLine(); // Limpiar buffer
 
-		} while (opc < 0 || opc > opciones.length);
+			} while (opc < 0 || opc > opciones.length);
+		} catch (InputMismatchException e) {
+			tec.nextLine();
+			System.out.println("Error en seleccion");
+		}
 		return opc;
+
 	}
 }
