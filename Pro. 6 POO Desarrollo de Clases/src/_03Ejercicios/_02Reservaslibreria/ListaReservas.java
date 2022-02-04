@@ -38,6 +38,7 @@ public class ListaReservas {
 			Reserva listaReservas = (Reserva) it.next();
 			texto += listaReservas.toString();
 		}
+		texto += "\n----------------";
 		return texto;
 	}
 
@@ -47,19 +48,22 @@ public class ListaReservas {
 		while (it.hasNext()) {
 			Reserva reserva = (Reserva) it.next();
 			if (reserva.getCodLibroReservado() == codigo) {
-				 numEjemplares += reserva.getNumEjemplares();
+				numEjemplares += reserva.getNumEjemplares();
 			}
 		}
 		return numEjemplares;
 	}
-	
+
 	public String reservasLibro(int codigo) {
 		Iterator<Reserva> it = listaReserva.iterator();
-		String listaReserva = "";
+		String listaReserva = "---------------\n";
 		while (it.hasNext()) {
 			Reserva reserva = (Reserva) it.next();
+
 			if (reserva.getCodLibroReservado() == codigo) {
-				listaReserva += "\nNombre cliente: " + reserva.getNombreCliente() + "\n" + "Telefono Cliente: " + reserva.getTelfCliente() + "\n";
+				listaReserva += "\nNombre cliente: " + reserva.getNombreCliente() + "\n" + "Telefono Cliente: "
+						+ reserva.getTelfCliente() + "\n";
+				listaReserva += "\n----------------\n";
 			}
 		}
 		return listaReserva;
