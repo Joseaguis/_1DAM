@@ -11,6 +11,7 @@ public class Tiempo implements Comparable<Tiempo> {
 	private int hora;
 	private int minuto;
 	private int segundo;
+	private static char separador = ':'; // este atributo es compartido por todos los objetos de la clase
 
 	// Metodos de la clase
 
@@ -70,29 +71,18 @@ public class Tiempo implements Comparable<Tiempo> {
 
 	public String toString() {
 		// return hora + ":" + minuto + ":" + segundo;
-		return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+		return String.format("%02d%c%02d%c%02d", hora, separador, minuto, separador, segundo);
 	}
-/**
- * Una posibilidad
- * public int compareTo(Tiempo t) {
-		if (this.hora < t.hora)
-			return -1;
-		else if (this.hora > t.hora)
-			return 1;
-		else if (this.minuto < t.minuto)
-			return -1;
-		else if (this.minuto > t.minuto)
-			return 1;
-		else if (this.segundo < t.segundo)
-			return -1;
-		else if (this.segundo > t.segundo)
-			return 1;
-		else
-			return 0;
 
-	}
- */
-	
+	/**
+	 * Una posibilidad public int compareTo(Tiempo t) { if (this.hora < t.hora)
+	 * return -1; else if (this.hora > t.hora) return 1; else if (this.minuto <
+	 * t.minuto) return -1; else if (this.minuto > t.minuto) return 1; else if
+	 * (this.segundo < t.segundo) return -1; else if (this.segundo > t.segundo)
+	 * return 1; else return 0;
+	 * 
+	 * }
+	 */
 
 	public int compareTo(Tiempo t) {
 		if (this.hora != t.hora)
