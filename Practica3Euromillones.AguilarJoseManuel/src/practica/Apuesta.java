@@ -80,7 +80,6 @@ public class Apuesta {
 	}
 
 	public String toString() {
-		// TODO
 		String text = "";
 
 		for (int i = 0; i < this.numeros.size(); i++) {
@@ -89,7 +88,7 @@ public class Apuesta {
 		
 		text.trim();
 
-		text += " - (";
+		text += "- (";
 
 		for (int i = 0; i < this.estrellas.size(); i++) {
 			text += String.format("%02d ", this.estrellas.get(i));
@@ -99,6 +98,39 @@ public class Apuesta {
 		text += ")";
 		
 		return text;
+	}
+	
+	public int calcularPremio (ArrayList<Integer> numeros, ArrayList<Integer> estrellas) {
+		int numAcertados = 0;
+		int estAcertados = 0;
+		
+		for (int i = 0; i < this.numeros.size(); i++) {
+			if (this.numeros.get(i) == numeros.get(i)) {
+				numAcertados++;
+			}
+		}
+		
+		for (int i = 0; i < this.estrellas.size(); i++) {
+			if (this.estrellas.get(i) == estrellas.get(i)) {
+				estAcertados++;
+			}
+		}
+		int categoria = 0;
+		if(numAcertados == 5 && estAcertados == 2) categoria = 1;
+		else if(numAcertados == 5 && estAcertados == 1) categoria = 2;
+		else if(numAcertados == 5 && estAcertados == 0) categoria = 3;
+		else if(numAcertados == 4 && estAcertados == 2) categoria = 4;
+		else if(numAcertados == 4 && estAcertados == 1) categoria = 5;
+		else if(numAcertados == 4 && estAcertados == 0) categoria = 6;
+		else if(numAcertados == 3 && estAcertados == 2) categoria = 7;
+		else if(numAcertados == 2 && estAcertados == 2) categoria = 8;
+		else if(numAcertados == 3 && estAcertados == 1) categoria = 9;
+		else if(numAcertados == 3 && estAcertados == 0) categoria = 10;
+		else if(numAcertados == 1 && estAcertados == 2) categoria = 11;
+		else if(numAcertados == 2 && estAcertados == 1) categoria = 12;
+		else if(numAcertados == 2 && estAcertados == 0) categoria = 13;
+		else categoria = 0;
+		return categoria;
 	}
 
 }

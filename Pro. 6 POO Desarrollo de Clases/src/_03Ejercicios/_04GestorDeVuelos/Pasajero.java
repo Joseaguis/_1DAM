@@ -11,7 +11,7 @@ public class Pasajero {
 
 	public String toString() {
 
-		return String.format("%s-%s", this.dni, this.nombre);
+		return String.format("%s - %s", this.dni, this.nombre);
 	}
 
 	public boolean equals(Object o) {

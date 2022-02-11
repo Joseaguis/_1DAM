@@ -1,5 +1,7 @@
 package _03Ejercicios._04GestorDeVuelos;
 
+import java.util.Random;
+
 import _02Ejemplos._03Tiempo.Tiempo;
 
 public class Vuelo {
@@ -19,20 +21,17 @@ public class Vuelo {
 		this.horaSalida = horaSalida;
 		this.horaLlegada = horaLlegada;
 		this.capacidad = capacidad;
+
 		this.numReservas = 0;
 		pasaje = new Pasajero[this.capacidad + 1];
 	}
 
 	public boolean hayLibres() {
-		boolean encontrado = false;
-		for (int i = 1; i < pasaje.length && !encontrado; i++) {
-			Pasajero pasajero = pasaje[i];
-			if (pasajero == null) {
-				encontrado = true;
-			}
+		if (numReservas < capacidad) {
+			return true;
+		} else {
+			return false;
 		}
-
-		return encontrado;
 	}
 
 	public boolean equals(Object o) {
@@ -53,44 +52,94 @@ public class Vuelo {
 	}
 
 	public int reservarAsiento(String nombrePasajero, String nifPasajero) throws IllegalArgumentException {
-		int i;
-		boolean encontrado = false;
+		if (!hayLibres()) {
+			return 0;
+		} else {
+			// Creamos el pasajero que insertaremos en el array
+			Pasajero p = new Pasajero(nifPasajero, nombrePasajero);
+			// Comprobar que p no esta esta ya entre el pasaje
 
-		for (i = 1; i < pasaje.length && !encontrado; i++) {
-			Pasajero p = pasaje[i];
-			if (p != null) {
-				if (p.getDni() == nifPasajero) {
-					throw new IllegalArgumentException("pasajero duplicado");
+			for (int i = 1; i < pasaje.length; i++) {
+				if (pasaje[i] != null && pasaje[i].equals(p)) {
+					throw new IllegalArgumentException("El pasajero ya tiene una reserva");
+				}
+			}
+			
+			int posicion;
+			do {
+				posicion = (int) (Math.random() * capacidad) + 1;
+			} while (pasaje[posicion] != null);
+			
+			// Guardamos al pasajero en pasaje
+			pasaje[posicion] = p;
+			this.numReservas++;
+			return posicion;
+		}
+	}
+
+	public int reservarAsiento(String nombrePasajero, String nifPasajero, char preferencia) throws IllegalArgumentException {
+		if (!hayLibres()) {
+			return 0;
+		} else {
+			// Creamos el pasajero que insertaremos en el array
+			Pasajero p = new Pasajero(nifPasajero, nombrePasajero);
+			// Comprobar que p no esta esta ya entre el pasaje
+			for (int i = 1; i < pasaje.length; i++) {
+				if (pasaje[i] != null && pasaje[i].equals(p)) {
+					throw new IllegalArgumentException("El pasajero ya tiene una reserva");
+				}
+			}
+			
+			int posicion = 0;
+			if (preferencia == 'V') {
+				for (int i = 1; i < pasaje.length && posicion == 0; i += 2) {
+					if (pasaje[i] == null) {
+						posicion = i;
+					}
+				}
+			} else if (preferencia == 'P') {
+				for (int i = 2; i < pasaje.length && posicion == 0; i += 2) {
+					if (pasaje[i] == null) {
+						posicion = i;
+					}
 				}
 			} else {
-				encontrado = true;
+				throw new IllegalArgumentException("nombre preferencia de");
 			}
+			
+			if (posicion == 0) {
+				for (int i = 1; i < pasaje.length && posicion == 0; i++) {
+					if (pasaje[i] == null) {
+						posicion = i;
+					}
+				}
+			}
+			
+			// Guardamos al pasajero en pasaje
+			pasaje[posicion] = p;
+			this.numReservas++;
+			return posicion;
 		}
-		if (!encontrado) {
-			i = 0;
+	}
+	
+	public void cancelarReserva(int numAsiento) {
+		if (pasaje[numAsiento] == null) {
+			throw new IllegalArgumentException("El asiento no esta reservado");
 		} else {
-			Pasajero pasajero = new Pasajero(nifPasajero, nombrePasajero);
-			pasaje[i] = pasajero;
+			pasaje[numAsiento] = null;
+			numReservas--;
 		}
-		return i;
 	}
-
-	private int[] asientosLibres() {
-		int[] libre = new int[pasaje.length];
-		int numAsientosLibres = 0;
-		for (int i = 1; i < pasaje.length; i++) {
-			if (pasaje[i] == null) {
-				libre[i] = i;
-				numAsientosLibres++;
+	
+	public String toString() {
+		String resultado = id + " - " + origen + " - " + destino + " - " + horaSalida + " - " + horaLlegada + "\nPasajeros:";
+		for (int i = 0; i < pasaje.length; i++) {
+			if (pasaje[i] != null) {
+				resultado += "\nAsiento " + i + ": " + pasaje[i];
 			}
+			
 		}
-		int[] asientosLibres = new int[numAsientosLibres + 1];
-		for (int i = 1; i < libre.length; i++) {
-			int j = 1;
-			if (libre[i] > 0) {
-				asientosLibres[j] = libre[i];
-			}
-		}
-		return asientosLibres;
+		return resultado;
 	}
+	
 }
