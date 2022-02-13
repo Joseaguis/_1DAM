@@ -59,6 +59,43 @@ public class Apuesta {
 		Collections.sort(estrellas);
 	}
 
+	public Apuesta(int numNumeros, int numEstrellas, int maxValorNumeros, int maxValorEstrellas, int seed) {
+		numeros = new ArrayList<Integer>();
+		estrellas = new ArrayList<Integer>();
+
+		Random r = new Random(seed);
+
+		// Generacion de los numeros aleatorios
+		for (int i = 0; i < numNumeros; i++) {
+			boolean contiene = false;
+			do {
+				int numAux = r.nextInt(maxValorNumeros) + 1;
+				if (!numeros.contains(numAux)) {
+					numeros.add(numAux);
+					contiene = true;
+				}
+
+			} while (!contiene);
+		}
+
+		Collections.sort(numeros);
+
+		// Generacion de las estrellas aleatorios
+		for (int i = 0; i < numEstrellas; i++) {
+			
+			boolean contiene = false;
+			do {
+				int numAux = r.nextInt(maxValorEstrellas) + 1;
+				if (!estrellas.contains(numAux)) {
+					estrellas.add(numAux);
+					contiene = true;
+				}
+
+			} while (!contiene);
+		}
+
+		Collections.sort(estrellas);
+	}
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;
