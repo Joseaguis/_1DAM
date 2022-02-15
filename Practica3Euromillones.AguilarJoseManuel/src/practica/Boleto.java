@@ -1,9 +1,6 @@
 package practica;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Boleto {
@@ -33,26 +30,6 @@ public class Boleto {
 		}
 	}
 
-	public Boleto(int numApuestas, int numNumeros, int numEstrellas, int maxValorNumeros, int maxValorEstrellas,
-			int seed) throws IllegalArgumentException {
-		boleto = new ArrayList<>();
-
-		if (numApuestas > MAXAPUESTAS)
-			throw new IllegalArgumentException("Se sobrepasa el maximo numero maximo de apuestas");
-
-		for (int i = 0; i < numApuestas; i++) {
-			boolean iguales = false;
-			do {
-				Apuesta a = new Apuesta(numNumeros, numEstrellas, maxValorNumeros, maxValorEstrellas, seed++);
-				if (!boleto.contains(a)) {
-					boleto.add(a);
-					iguales = true;
-				}
-			} while (!iguales);
-
-		}
-	}
-
 	public String toString() {
 
 		String text = "";
@@ -67,7 +44,7 @@ public class Boleto {
 		return text;
 	}
 
-	private int[] calcularPremios(ArrayList<Integer> numeros, ArrayList<Integer> estrellas) {
+	public int[] calcularPremios(ArrayList<Integer> numeros, ArrayList<Integer> estrellas) {
 		int[] listaPremio = new int[14];
 
 		for (int i = 0; i < (boleto.size()); i++) {
@@ -87,14 +64,13 @@ public class Boleto {
 
 		text += "           Premios         \n";
 		text += "===============================\n";
-		for (int i = 1; i < boleto.size(); i++) {
+		for (int i = 1; i < v.length; i++) {
 			if (v[i] != 0) {
-				text += String.format("nº de apuestas con premio de %dª categoria: %d%n", i, v[i]);
+				text += String.format("nÂª de apuestas con premio de %dÂª categoria: %d%n", i, v[i]);
 				premio = true;
-				
 			}
 		}
-		
+		if(!premio) text += "No hay premio\n";
 		text += "===============================";
 		return text;
 	}

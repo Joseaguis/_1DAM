@@ -17,7 +17,7 @@ public class _19Tetris {
 			}
 		}
 		if (!lineaVacia) {
-			
+			//TODO
 		}
 	}
 }
