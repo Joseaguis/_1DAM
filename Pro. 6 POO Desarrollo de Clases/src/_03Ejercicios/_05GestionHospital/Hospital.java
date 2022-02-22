@@ -54,6 +54,11 @@ public class Hospital {
 	}
 	
 	public void darAltas() {
-		
+		for (int i = 0; i < listaCamas.length; i++) {
+			listaCamas[i].mejorar();
+			if (listaCamas[i].getEstado() <= 0) {
+				darAltaPaciente(i);
+			}
+		}
 	}
 }
