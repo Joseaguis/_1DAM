@@ -3,15 +3,13 @@ package _02Ejemplos.Alumnos;
 public class Persona implements Comparable<Persona> {
 	private String dni;
 	private String nombre;
-	
-	public Persona() {
-		
-	}
 
 	public Persona(String dni, String nombre) {
 		this.dni = dni;
 		this.nombre = nombre;
 	}
+	
+	
 
 	public String getDni() {
 		return dni;
@@ -29,15 +27,35 @@ public class Persona implements Comparable<Persona> {
 		this.nombre = nombre;
 	}
 
-	public boolean equals(Object o) {
-		if (this == o)
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-
-		if (!(o instanceof Persona))
+		if (!(obj instanceof Persona))
 			return false;
-
-		return this.dni.equals(((Persona) o).dni);
-
+		Persona other = (Persona) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
 	}
 
 	public int compareTo(Persona p) {

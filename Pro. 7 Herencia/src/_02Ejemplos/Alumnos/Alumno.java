@@ -4,6 +4,12 @@ public class Alumno extends Persona{
 	private int nia;
 	private String grupo;
 	
+	public Alumno(String dni, String nombre, int nia, String grupo) {
+		super(dni,nombre);
+		this.nia = nia;
+		this.grupo = grupo;
+	}
+	
 	
 	
 	public int getNia() {
@@ -19,5 +25,10 @@ public class Alumno extends Persona{
 		this.grupo = grupo;
 	}
 	
-	
+	@Override
+	public String toString() {
+		//Reescritura parcial
+		
+		return super.toString() + " - " + this.nia + " - " + this.grupo;
+	}
 }
