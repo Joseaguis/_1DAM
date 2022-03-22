@@ -1,4 +1,4 @@
-package _02Ejemplos.Alumnos;
+package _02Ejemplos._01Alumnos;
 
 public class Persona implements Comparable<Persona> {
 	private String dni;

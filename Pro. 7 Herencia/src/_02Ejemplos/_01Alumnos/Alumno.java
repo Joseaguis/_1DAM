@@ -1,4 +1,4 @@
-package _02Ejemplos.Alumnos;
+package _02Ejemplos._01Alumnos;
 
 public class Alumno extends Persona{
 	private int nia;
