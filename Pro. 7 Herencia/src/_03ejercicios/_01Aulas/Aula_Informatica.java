@@ -13,6 +13,7 @@ public class Aula_Informatica extends Aula {
 		return numOrdenadores * 2;
 	}
 	
+	@Override
 	public String toString() {
 		return super.toString() + " - Nº Ordenadores: " + numOrdenadores;
 	}
