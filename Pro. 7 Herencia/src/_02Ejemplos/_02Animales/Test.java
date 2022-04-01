@@ -2,6 +2,9 @@ package _02Ejemplos._02Animales;
 
 public class Test {
 	public static void main(String[] args) {
+		Animal a1 = new Perro();
+		
+		
 		Perro p1 = new Perro();
 		p1.saludar();
 		p1.pasear();

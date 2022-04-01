@@ -41,4 +41,12 @@ public class Circulo extends Figura {
 		return (Math.PI * 2) * radio;
 	}
 
+	public int getRadio() {
+		return radio;
+	}
+
+	public void setRadio(int radio) {
+		this.radio = radio;
+	}
+
 }

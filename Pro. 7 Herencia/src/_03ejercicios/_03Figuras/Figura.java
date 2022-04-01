@@ -17,4 +17,30 @@ public abstract class Figura {
 
 	public abstract double area();
 	public abstract double perimetro();
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
 }

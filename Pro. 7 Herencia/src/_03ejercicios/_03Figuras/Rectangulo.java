@@ -23,4 +23,21 @@ public class Rectangulo extends Figura {
 	public double perimetro() {
 		return (altura * 2) + (anchura * 2);
 	}
+
+	public int getAltura() {
+		return altura;
+	}
+
+	public int getAnchura() {
+		return anchura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+
+	public void setAnchura(int anchura) {
+		this.anchura = anchura;
+	}
+	
 }
