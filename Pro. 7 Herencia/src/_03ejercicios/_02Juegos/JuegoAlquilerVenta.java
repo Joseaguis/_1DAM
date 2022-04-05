@@ -1,6 +1,6 @@
 package _03ejercicios._02Juegos;
 
-public class JuegoAlquilerVenta extends Juego {
+public abstract class JuegoAlquilerVenta extends Juego {
 
 	protected double precio;
 	protected int numCopiasDisponibles;
