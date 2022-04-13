@@ -37,7 +37,13 @@ public class TestEquipo {
 		nombres2.add("Javi");
 		nombres2.add("Roberto");
 		
+		
+		
 		Equipo<Futbolista> equipo = new Equipo<>("3ºDAM");
+		Equipo<Programador> equipo2 = new Equipo<>("2ºDAM");
+		
+		System.out.println(equipo.getCapitan().getGoles());
+		System.out.println(equipo2.getCapitan().getLenguaje());
 		
 
 	}

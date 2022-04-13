@@ -40,10 +40,15 @@ public class OrdenarVariosCriterios {
 		
 		System.out.println(Arrays.toString(v));
 	}
-}
+	
+	class ComparadorLongitudModelo implements Comparator<Vehiculo> {
 
-class ComparadorLongitudModelo implements Comparator<Vehiculo> {
-	public int compare(Vehiculo v1, Vehiculo v2) {
-		return v1.getModelo().length() - v2.getModelo().length();
+		@Override
+		public int compare(Vehiculo o1, Vehiculo o2) {
+			
+			return o1.getModelo().length() - o2.getModelo().length();
+		}
+		
 	}
 }
+
