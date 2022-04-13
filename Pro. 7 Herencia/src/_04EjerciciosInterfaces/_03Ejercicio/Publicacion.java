@@ -11,6 +11,10 @@ public class Publicacion implements Comparable<Publicacion>{
 		this.anyo = anyo;
 	}
 	
+	public String toString() {
+		return String.format("%s - %s - %d", this.codigo, this.titulo, this.anyo);
+	}
+	
 	public int compareTo(Publicacion v) {
 		return this.codigo.compareTo(v.codigo);
 	}
