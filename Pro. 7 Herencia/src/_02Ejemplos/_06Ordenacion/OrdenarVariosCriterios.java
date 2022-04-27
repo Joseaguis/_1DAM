@@ -24,7 +24,7 @@ public class OrdenarVariosCriterios {
 		System.out.println(Arrays.toString(v));
 
 		// Usando una clase interna(inner class) que implementa COmparator<Vehiculo>
-		Arrays.sort(v, new ComparadorLongitudModelo());
+//		Arrays.sort(v, new ComparadorLongitudModelo());
 		System.out.println(Arrays.toString(v));
 
 		// Usando una clase "al vuelo" o "anonima" (Anonymous)

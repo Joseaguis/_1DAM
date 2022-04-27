@@ -1,0 +1,11 @@
+No es necesario, pero es recomendable
+Si, es necesario
+Si, ya que los creditos no estan inicializados
+
+es incorrecto porque Empleado no contiene nombre en esa clase sino en la padre
+this.nombre
+
+Que no se pueden modificar en las subclases
+
+no, pero apareceria la direccion de memoria
+
