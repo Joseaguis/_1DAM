@@ -1,0 +1,12 @@
+No es necesario, pero es recomendable
+
+Si, es necesario
+
+Si, ya que los creditos no estan inicializados
+
+es incorrecto porque Empleado no contiene nombre en esa clase sino en la padre
+protect
+
+Que no se pueden reescribir en las subclases
+
+no, pero apareceria la direccion de memoria
