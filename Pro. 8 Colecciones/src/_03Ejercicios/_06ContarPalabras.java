@@ -2,15 +2,14 @@ package _03Ejercicios;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
-public class _05PalabrasTexto {
+public class _06ContarPalabras {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Scanner read = null;
-		HashMap<String> lh = new HashMap<>();;
+		LinkedHashSet<String> lh = new LinkedHashSet<String>();
 		
 		
 		try {

@@ -60,6 +60,14 @@ public class _04TestVelocidadSet {
 		}
 		t2 = System.currentTimeMillis();
 		System.out.println("Lista: " + (t2 - t1));
+		
+		/*
+		 * Una tabla Hash es una estructura en la que los elementos se almacenan
+		 * en un array la posición que correspinde a un elemento dentro del array, se calcula
+		 * a partir del dato que identifica al elemento
+		 */
+		
+		
 	}
 }
 

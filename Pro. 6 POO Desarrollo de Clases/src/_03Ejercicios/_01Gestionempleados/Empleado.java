@@ -10,13 +10,6 @@ public class Empleado implements Comparable<Empleado> {
 	private String dni;
 	private int anyo;
 	private double sueldo;
-
-	/**
-	 * @param nombre
-	 * @param dni
-	 * @param anyo
-	 * @param sueldo
-	 */
 	/**
 	 * @param nombre
 	 * @param dni
@@ -79,6 +72,10 @@ public class Empleado implements Comparable<Empleado> {
 			return false;
 		}
 
+	}
+	
+	public int hashCode() {
+		return this.dni.hashCode();
 	}
 
 	public int compareTo(Empleado e) {
