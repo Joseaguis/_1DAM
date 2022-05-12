@@ -2,15 +2,14 @@ package _03Ejercicios;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class _05PalabrasTexto {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Scanner read = null;
-		HashMap<String> lh = new HashMap<>();;
+		TreeSet<String> lh = new TreeSet<>();
 		
 		
 		try {
